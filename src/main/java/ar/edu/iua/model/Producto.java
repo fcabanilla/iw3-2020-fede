@@ -1,12 +1,20 @@
 package ar.edu.iua.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -20,7 +28,8 @@ public class Producto implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(length = 100)
+	@Column(length = 100, nullable = false, unique = true)
+	
 	private String nombre;
 	
 	@Column(length = 200)
@@ -31,6 +40,44 @@ public class Producto implements Serializable{
 	@Column(columnDefinition = "TINYINT DEFAULT 0")
 	private boolean enStock;
 	
+	
+	
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private ProductoDetalle productoDetalle;
+	
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "proveedor_id")
+	private Proveedor proveedor;
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(	name = "producto_ingrediente_detalle",
+				joinColumns = @JoinColumn(name = "producto_id"),
+				inverseJoinColumns = @JoinColumn(name = "ingrediente_id")
+	)
+	private List<Ingrediete> ingredienteList;
+	
+	
+	
+
+	
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
+	}
+
+	public ProductoDetalle getProductoDetalle() {
+		return productoDetalle;
+	}
+
+	public void setProductoDetalle(ProductoDetalle productoDetalle) {
+		this.productoDetalle = productoDetalle;
+	}
+
 	public Long getId() {
 		return id;
 	}

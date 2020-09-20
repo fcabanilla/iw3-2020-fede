@@ -2,6 +2,7 @@ package ar.edu.iua.model;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -57,6 +59,24 @@ public class Producto implements Serializable{
 				inverseJoinColumns = @JoinColumn(name = "ingrediente_id")
 	)
 	private List<Ingrediete> ingredienteList;
+	
+	
+	
+	@OneToMany(mappedBy = "producto")
+	Set<VentaDetalle> ventaDetalle;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * ****************************************************
+	 * */
 	
 	
 	

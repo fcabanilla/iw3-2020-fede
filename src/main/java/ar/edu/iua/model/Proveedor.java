@@ -23,12 +23,12 @@ public class Proveedor implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonBackReference
+	@JsonBackReference(value = "idProveedor")
 	private int id;
 	
 	private String nombre;
 	
-	@JsonBackReference
+	@JsonBackReference(value = "productoList")
 	@OneToMany(targetEntity = Producto.class, mappedBy = "proveedor", fetch = FetchType.LAZY)
 	private List<Producto> productoList;
 	

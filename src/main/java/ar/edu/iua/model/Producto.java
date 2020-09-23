@@ -28,7 +28,7 @@ public class Producto implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(length = 100, nullable = false, unique = true)
+	@Column(length = 100, nullable = false)
 	
 	private String nombre;
 	
@@ -129,6 +129,14 @@ public class Producto implements Serializable{
 
 	public void setEnStock(boolean enStock) {
 		this.enStock = enStock;
+	}
+
+	public List<Ingrediente> getIngredienteList() {
+		return ingredienteList;
+	}
+
+	public void setIngredienteList(List<Ingrediente> ingredienteList) {
+		this.ingredienteList = ingredienteList;
 	}
 
 

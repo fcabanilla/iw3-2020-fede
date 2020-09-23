@@ -65,17 +65,6 @@ public class ProductoRestController {
 			@RequestParam(name = "order-asc", required = false, defaultValue = "false") String orderAsc,
 			@RequestParam(name = "order-desc", required = false, defaultValue = "false") String orderDesc
 			) {
-		log.error("Precio: " + precio + "\n");
-		
-		log.error("nombre: " + nombre + "\n");
-		
-		log.error("descripcion: " + descripcion + "\n");
-		
-		log.error("precio-orden: " + precioOrden + "\n");
-		
-		log.error("order-asc: " + orderAsc + "\n");
-		
-		log.error("order-desc: " + orderDesc + "\n");
 		
 		try {
 

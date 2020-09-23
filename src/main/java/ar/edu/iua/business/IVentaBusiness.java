@@ -16,5 +16,11 @@ public interface IVentaBusiness {
 	public Venta update(Venta venta) throws NotFoundException, BusinessException;
 	
 	public void delete(Long id)throws NotFoundException, BusinessException;
+	
+	/*
+	 * 	METODOS CUSTOMS
+	 * */
+
+	public List<Venta> listByProduct(Long id) throws BusinessException;
 
 }

@@ -76,7 +76,7 @@ public class VentaBusiness implements IVentaBusiness{
 		} catch (Exception e) {
 			throw new BusinessException(e);
 		}
-		
+
 	}
 
 }

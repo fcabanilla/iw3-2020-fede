@@ -2,7 +2,8 @@ package ar.edu.iua.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
+//import java.util.Set;
 
 import javax.persistence.*;
 
@@ -20,6 +21,33 @@ public class Venta implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(name ="fecha", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable = true)
+	private Date fecha;
+
+	@Column(length = 150, nullable = false)
+	private Double precioTotalVenta;
+
+	// @Column(length = 120, nullable = false)
+	// private int cantTotalProductos;
+/*
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id")
+	private User user;
+*/
+	@ManyToMany
+	@JoinTable(name = "producto_venta", joinColumns = { @JoinColumn(name = "id_venta", referencedColumnName = "id") },
+	inverseJoinColumns = { @JoinColumn(name = "id_producto", referencedColumnName = "id") })
+	private List<Producto> productoList;
+	
+	
+	
+	
+	
+	/*
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
 	@Column(name = "fecha", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date fecha;
 	
@@ -29,7 +57,7 @@ public class Venta implements Serializable{
 	
 	@Column
 	private int cantidadTotalProducto;
-	
+	*/
 	/*
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
@@ -42,11 +70,11 @@ public class Venta implements Serializable{
 	*/
 	
 	
-	
+	/*
 	@OneToMany(mappedBy = "venta")
 	Set<VentaDetalle> ventaDetalle;
 	
-	
+	*/
 	
 	
 	
@@ -69,6 +97,14 @@ public class Venta implements Serializable{
 		return id;
 	}
 
+	public List<Producto> getProductoList() {
+		return productoList;
+	}
+
+	public void setProductoList(List<Producto> productoList) {
+		this.productoList = productoList;
+	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -88,7 +124,7 @@ public class Venta implements Serializable{
 	public void setPrecioTotalVenta(Double precioTotal) {
 		this.precioTotalVenta = precioTotal;
 	}
-
+/*
 	public int getCantidadTotalProducto() {
 		return cantidadTotalProducto;
 	}
@@ -96,11 +132,7 @@ public class Venta implements Serializable{
 	public void setCantidadTotalProducto(int cantidadTodalProducto) {
 		this.cantidadTotalProducto = cantidadTodalProducto;
 	}
-/*
-	public User getUser() {
-		return user;
-	}
-*/
+
 	public Set<VentaDetalle> getVentaDetalle() {
 		return ventaDetalle;
 	}
@@ -108,5 +140,5 @@ public class Venta implements Serializable{
 	public void setVentaDetalle(Set<VentaDetalle> ventaDetalle) {
 		this.ventaDetalle = ventaDetalle;
 	}
-
+*/
 }

@@ -9,10 +9,7 @@ import org.springframework.stereotype.Service;
 
 import ar.edu.iua.business.exception.BusinessException;
 import ar.edu.iua.business.exception.NotFoundException;
-import ar.edu.iua.model.Producto;
 import ar.edu.iua.model.Venta;
-import ar.edu.iua.model.VentaDetalle;
-import ar.edu.iua.model.persistence.ProductoRepository;
 import ar.edu.iua.model.persistence.VentaRepository;
 
 
@@ -20,7 +17,6 @@ import ar.edu.iua.model.persistence.VentaRepository;
 public class VentaBusiness implements IVentaBusiness{
 	@Autowired
 	private VentaRepository ventaDAO;
-	private ProductoRepository productoDAO;
 
 	@Override
 	public Venta load(Long id) throws NotFoundException, BusinessException {
@@ -48,16 +44,6 @@ public class VentaBusiness implements IVentaBusiness{
 	@Override
 	public Venta add(Venta venta) throws BusinessException {
 		try {
-			
-			
-			for(VentaDetalle ventaDetalle : venta.getVentaDetalle()) {
-				//ventaDetalle.getProducto().getId();
-				Optional<Producto> productoDB = productoDAO.findById(ventaDetalle.getProducto().getId());
-				
-				Double precioTotal = ventaDetalle.getCantidad() * productoDB.get().getPrecioLista(); 
-				
-				ventaDetalle.setPrecioTotal(precioTotal);
-			}
 
 			return ventaDAO.save(venta);
 		} catch (Exception e) {

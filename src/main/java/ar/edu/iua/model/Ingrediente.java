@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name = "ingredientes")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
-public class Ingrediete implements Serializable {
+public class Ingrediente implements Serializable {
 
 	/**
 	 * 

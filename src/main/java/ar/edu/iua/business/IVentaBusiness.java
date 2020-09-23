@@ -17,4 +17,6 @@ public interface IVentaBusiness {
 	
 	public void delete(Long id)throws NotFoundException, BusinessException;
 
+	public List<Venta> listByProduct(Long id) throws BusinessException;
+
 }

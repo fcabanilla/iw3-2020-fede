@@ -92,4 +92,13 @@ public class VentaRestController {
 		}
 	}
 
+	@GetMapping(value = "venta-producto/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Venta>> list(@PathVariable("id") Long id) {
+
+		try {
+			return new ResponseEntity<List<Venta>>(ventaBusiness.listByProduct(id), HttpStatus.OK);
+		} catch (BusinessException e) {
+			return new ResponseEntity<List<Venta>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 }

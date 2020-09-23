@@ -53,10 +53,7 @@ public class User implements Serializable{
 	@JoinColumn(name = "id_user", referencedColumnName = "id") }, inverseJoinColumns = {
 	@JoinColumn(name = "id_rol", referencedColumnName = "id") })
 	private Set<Rol> roles;
-/*
-	@OneToMany(targetEntity = Venta.class, mappedBy = "user", fetch = FetchType.LAZY)
-	private List<Venta> ventaList;
-*/
+
 	@ManyToOne
 	@JoinColumn(name="id_rol_principal")
 	private Rol rolPrincipal;
@@ -139,17 +136,16 @@ public class User implements Serializable{
 	public void setRolPrincipal(Rol rolPrincipal) {
 		this.rolPrincipal = rolPrincipal;
 	}
-/*
-	public List<Venta> getVentaList() {
-		return ventaList;
+
+
+	public Set<Rol> getRoles() {
+		return roles;
 	}
 
 
-	public void setVentaList(List<Venta> ventaList) {
-		this.ventaList = ventaList;
+	public void setRoles(Set<Rol> roles) {
+		this.roles = roles;
 	}
-	
-*/
 	
 	
 	

@@ -23,6 +23,4 @@ public interface IVentaBusiness {
 
 	public List<Venta> listByProduct(Long id) throws BusinessException;
 
-	public List<Venta> listByProduct(Long id) throws BusinessException;
-
 }

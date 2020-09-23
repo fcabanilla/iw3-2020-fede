@@ -35,8 +35,7 @@ public class VentaRestController {
 		} catch (NotFoundException e) {
 			// TODO Auto-generated catch block
 			return new ResponseEntity<Venta>(HttpStatus.NOT_FOUND);
-		}
-		
+		}		
 	}
 
 	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)

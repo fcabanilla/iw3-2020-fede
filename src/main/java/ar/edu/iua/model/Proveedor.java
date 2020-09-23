@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -22,10 +23,12 @@ public class Proveedor implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonBackReference
 	private int id;
 	
 	private String nombre;
 	
+	@JsonBackReference
 	@OneToMany(targetEntity = Producto.class, mappedBy = "proveedor", fetch = FetchType.LAZY)
 	private List<Producto> productoList;
 	

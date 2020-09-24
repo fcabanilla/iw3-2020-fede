@@ -71,6 +71,7 @@ public class VentaBusiness implements IVentaBusiness{
 	@Override
 	public List<Venta> listByProduct(Long id) throws BusinessException {
 		try {
+			//return ventaDAO.findVentasByProducto(id);
 			return ventaDAO.findVentasByProducto(id);
 			//return ventaDAO.findBy
 		} catch (Exception e) {

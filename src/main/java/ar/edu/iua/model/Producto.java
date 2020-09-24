@@ -51,11 +51,10 @@ public class Producto implements Serializable{
 	@JoinColumn(name = "proveedor_id")
 	private Proveedor proveedor;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(	name = "producto_ingrediente_detalle",
-				joinColumns = @JoinColumn(name = "producto_id"),
-				inverseJoinColumns = @JoinColumn(name = "ingrediente_id")
-	)
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name = "producto_ingrediente_detalle",
+	        joinColumns = @JoinColumn(name = "producto_id"),
+	        inverseJoinColumns = @JoinColumn(name = "ingrediente_id"))
 	private List<Ingrediente> ingredienteList;
 
 	

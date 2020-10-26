@@ -136,4 +136,14 @@ public class ProductoBusiness implements IProductoBusiness {
 		}
 	}
 
+	@Override
+	public List<Producto> listProductoIngredienteByGreaterPrecio(Double precio) throws BusinessException {
+		try {
+			log.debug("Pase por aca");
+			return productoDAO.findProductoIngredienteByGreaterPrecioLista(precio);
+		} catch (Exception e) {
+			throw new BusinessException();
+		}
+	}
+
 }

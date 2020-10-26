@@ -44,7 +44,7 @@ public class ProductoRestController {
 			return new ResponseEntity<Producto>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
+
 	@GetMapping(value = "letra/{letra}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Producto>> list(@PathVariable("letra") String letra) {
 
@@ -59,36 +59,53 @@ public class ProductoRestController {
 	public ResponseEntity<List<Producto>> list(
 
 			@RequestParam(name = "precio", required = false, defaultValue = "-1") String precio,
+			@RequestParam(name = "precio-greater", required = false, defaultValue = "-1") String precioGreater,
 			@RequestParam(name = "nombre", required = false, defaultValue = "*") String nombre,
 			@RequestParam(name = "descripcion", required = false, defaultValue = "*") String descripcion,
 			@RequestParam(name = "precio-orden", required = false, defaultValue = "mayor") String precioOrden,
 			@RequestParam(name = "order-asc", required = false, defaultValue = "false") String orderAsc,
-			@RequestParam(name = "order-desc", required = false, defaultValue = "false") String orderDesc
-			) {
-		
+			@RequestParam(name = "order-desc", required = false, defaultValue = "false") String orderDesc) {
+
 		try {
 
 			if (!nombre.equals("*") && !descripcion.equals("*")) {
+				log.debug("listByNameAndDescirption");
 				return new ResponseEntity<List<Producto>>(
 						productoBusiness.listByNameAndDescirption(nombre, descripcion), HttpStatus.OK);
 			}
 			if (!nombre.equals("*")) {
+				log.debug("listByName");
+
 				return new ResponseEntity<List<Producto>>(productoBusiness.listByName(nombre), HttpStatus.OK);
 			}
 			if (!descripcion.equals("*")) {
+				log.debug("listByDescription");
 				return new ResponseEntity<List<Producto>>(productoBusiness.listByDescription(descripcion),
 						HttpStatus.OK);
 			}
+			if (!precioGreater.equals("-1")) {
+				log.debug("Se ejecuta productoBusiness.listProductoIngredienteByGreaterPrecio(precioGreater)");
+				log.debug("precioGreater:" + precioGreater);
+				// retorno la lista de productos con filtro por precio y precio orden
+				return new ResponseEntity<List<Producto>>(
+						productoBusiness.listProductoIngredienteByGreaterPrecio(Double.parseDouble(precioGreater)),
+						HttpStatus.OK);
+			}
 			if (!precio.equals("-1")) {
-				log.error("Se ejecuta productoBusiness.list(precio, precioOrden)");
+				log.info("Se ejecuta productoBusiness.list(precio, precioOrden)");
 				// retorno la lista de productos con filtro por precio y precio orden
 				return new ResponseEntity<List<Producto>>(
 						productoBusiness.listPrice(Double.parseDouble(precio), precioOrden), HttpStatus.OK);
 			}
-			if (orderAsc.equals("true"))
+			if (orderAsc.equals("true")) {
+				log.info("listOrderBy(\"ASC\")");
 				return new ResponseEntity<List<Producto>>(productoBusiness.listOrderBy("ASC"), HttpStatus.OK);
-			if (orderDesc.equals("true"))
+			}
+			if (orderDesc.equals("true")) {
+				log.info("listOrderBy(\"DESC\")");
 				return new ResponseEntity<List<Producto>>(productoBusiness.listOrderBy("DESC"), HttpStatus.OK);
+			}
+			log.info("list()");
 			return new ResponseEntity<List<Producto>>(productoBusiness.list(), HttpStatus.OK);
 
 		} catch (BusinessException e) {

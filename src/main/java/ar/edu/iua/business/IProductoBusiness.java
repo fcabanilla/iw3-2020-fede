@@ -40,4 +40,7 @@ public interface IProductoBusiness {
 	
 	public List<Producto> listFirstLetter(String primeraLetra) throws BusinessException;
 	
+	public List<Producto> listProductoIngredienteByGreaterPrecio(Double precio) throws BusinessException;
+	
+	
 }

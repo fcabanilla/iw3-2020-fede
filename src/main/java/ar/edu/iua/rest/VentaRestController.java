@@ -112,5 +112,14 @@ public class VentaRestController {
 			return new ResponseEntity<List<VentaDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	@GetMapping(value = "search-producto/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<VentaDTO>> search(@PathVariable("name") String name) {
+
+		try {
+			return new ResponseEntity<List<VentaDTO>>(ventaBusiness.listByProductWithXInTheName(name), HttpStatus.OK);
+		} catch (BusinessException e) {
+			return new ResponseEntity<List<VentaDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 }

@@ -22,6 +22,8 @@ public interface VentaRepository extends JpaRepository<Venta, Long>{
 	@Query(nativeQuery = true)
 	public List<VentaDTO> findByProductX(String productName);
 
+	@Query(nativeQuery = true)
+	public List<VentaDTO> findByProductWithXInTheName(String partialProductName);
 	//findByIngredienteListDescripcionIngrediente(String descripcionIngrediente);
 	
 }

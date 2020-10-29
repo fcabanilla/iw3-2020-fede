@@ -92,4 +92,15 @@ public class VentaBusiness implements IVentaBusiness{
 		}
 	}
 
+	@Override
+	public List<VentaDTO> listByProductWithXInTheName(String partialProductName) throws BusinessException {
+		try {
+			//return ventaDAO.findVentasByProducto(id);
+			return ventaDAO.findByProductWithXInTheName(partialProductName);
+			//return ventaDAO.findBy
+		} catch (Exception e) {
+			throw new BusinessException(e);
+		}
+	}
+
 }

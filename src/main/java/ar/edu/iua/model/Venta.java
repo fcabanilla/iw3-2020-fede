@@ -5,12 +5,21 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
-import ar.edu.iua.model.DTO.ProveedorDTO;
 import ar.edu.iua.model.DTO.VentaDTO;
 
 @Entity
 @Table(name="venta")
-
+/*
+ * CONSULTAR COMO HACER UN LIKE CON NATIVE QUERY NAMED
+ * */
+@NamedNativeQuery(
+		name = "Venta.findByProductWithXInTheName", 
+		query = "SELECT p.nombre AS Producto, v.fecha AS Fecha\n" + 
+				"FROM venta v\n" + 
+				"INNER JOIN producto_venta pv ON pv.id_venta = v.id\n" + 
+				"INNER JOIN producto p ON pv.id_producto = p.id\n" + 
+				"WHERE p.nombre LIKE ?1", 
+		resultSetMapping = "ventaMap")
 
 @NamedNativeQuery(
 		name = "Venta.findByProductX", 
@@ -32,8 +41,6 @@ import ar.edu.iua.model.DTO.VentaDTO;
                 )
         }
 )
-
-
 
 
 

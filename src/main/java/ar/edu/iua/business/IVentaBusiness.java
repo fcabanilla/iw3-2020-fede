@@ -25,5 +25,7 @@ public interface IVentaBusiness {
 	public List<Venta> listByProduct(Long id) throws BusinessException;
 	
 	public List<VentaDTO> listByProductX(String productName) throws BusinessException;
+	
+	public List<VentaDTO> listByProductWithXInTheName(String productName) throws BusinessException;
 
 }

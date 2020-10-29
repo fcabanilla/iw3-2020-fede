@@ -34,14 +34,13 @@ public class VentaDTO implements Serializable {
 		this.fecha = fecha;
 	}
 
-	public String getProductoList() {
+	public String getProductName() {
 		return productName;
 	}
 
-	public void setProductoList(String productoList) {
-		this.productName = productoList;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
-	
-	
+
 	
 }

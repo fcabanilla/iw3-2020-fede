@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import ar.edu.iua.business.exception.BusinessException;
 import ar.edu.iua.business.exception.NotFoundException;
 import ar.edu.iua.model.Venta;
+import ar.edu.iua.model.DTO.VentaDTO;
 import ar.edu.iua.model.persistence.VentaRepository;
 
 
@@ -78,6 +79,17 @@ public class VentaBusiness implements IVentaBusiness{
 			throw new BusinessException(e);
 		}
 
+	}
+
+	@Override
+	public List<VentaDTO> listByProductX(String productName) throws BusinessException {
+		try {
+			//return ventaDAO.findVentasByProducto(id);
+			return ventaDAO.findByProductX(productName);
+			//return ventaDAO.findBy
+		} catch (Exception e) {
+			throw new BusinessException(e);
+		}
 	}
 
 }

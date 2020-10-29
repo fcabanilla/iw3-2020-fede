@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import ar.edu.iua.business.exception.BusinessException;
 import ar.edu.iua.business.exception.NotFoundException;
 import ar.edu.iua.model.Proveedor;
-import ar.edu.iua.model.ProveedorDTO;
+import ar.edu.iua.model.DTO.ProveedorDTO;
 import ar.edu.iua.model.persistence.ProveedorRepository;
 
 

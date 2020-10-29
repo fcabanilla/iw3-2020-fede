@@ -10,15 +10,21 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import ar.edu.iua.model.DTO.ProveedorDTO;
+
 @Entity
 @Table(name="proveedor")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
 
 
-@NamedNativeQuery(name = "Proveedor.findWithPrefix", query = "SELECT p.nombre \n FROM proveedor p", resultSetMapping = "proveedormap")
+@NamedNativeQuery(
+		name 	= "Proveedor.findWithPrefix", 
+		query 	= "SELECT p.nombre\n" + 
+				"FROM proveedor p", 
+		resultSetMapping = "proveedorMap")
 @SqlResultSetMapping(
-        name="proveedormap",
+        name = "proveedorMap",
         classes = {
                 @ConstructorResult(
                         columns = {

@@ -21,7 +21,7 @@ import ar.edu.iua.business.IProveedorBusiness;
 import ar.edu.iua.business.exception.BusinessException;
 import ar.edu.iua.business.exception.NotFoundException;
 import ar.edu.iua.model.Proveedor;
-import ar.edu.iua.model.ProveedorDTO;
+import ar.edu.iua.model.DTO.ProveedorDTO;
 
 @RestController
 @RequestMapping(value = Constantes.URL_PROVEEDOR)
@@ -44,14 +44,14 @@ public class ProveedorRestController {
 		}		
 	}
 	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Proveedor>> list() {
+	public ResponseEntity<List<ProveedorDTO>> list() {
 		try {
 			log.debug("[REST] - findWithPrefix - Proveedor Con prefijo");
-			return new ResponseEntity<List<Proveedor>>(proveedorBusiness.list(), HttpStatus.OK);
+			return new ResponseEntity<List<ProveedorDTO>>(proveedorBusiness.listPrefix(), HttpStatus.OK);
 
 		} catch (BusinessException e) {
 			//log.error(e.getMessage(), e);
-			return new ResponseEntity<List<Proveedor>>(HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<List<ProveedorDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	@PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)

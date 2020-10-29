@@ -4,7 +4,7 @@ import java.util.List;
 import ar.edu.iua.business.exception.BusinessException;
 import ar.edu.iua.business.exception.NotFoundException;
 import ar.edu.iua.model.Proveedor;
-import ar.edu.iua.model.ProveedorDTO;
+import ar.edu.iua.model.DTO.ProveedorDTO;
 
 public interface IProveedorBusiness {
 

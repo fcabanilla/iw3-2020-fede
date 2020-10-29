@@ -19,6 +19,7 @@ import ar.edu.iua.business.IVentaBusiness;
 import ar.edu.iua.business.exception.BusinessException;
 import ar.edu.iua.business.exception.NotFoundException;
 import ar.edu.iua.model.Venta;
+import ar.edu.iua.model.DTO.VentaDTO;
 
 @RestController
 @RequestMapping(value = Constantes.URL_VENTAS)
@@ -99,6 +100,16 @@ public class VentaRestController {
 			return new ResponseEntity<List<Venta>>(ventaBusiness.listByProduct(id), HttpStatus.OK);
 		} catch (BusinessException e) {
 			return new ResponseEntity<List<Venta>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping(value = "producto/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<VentaDTO>> list(@PathVariable("name") String name) {
+
+		try {
+			return new ResponseEntity<List<VentaDTO>>(ventaBusiness.listByProductX(name), HttpStatus.OK);
+		} catch (BusinessException e) {
+			return new ResponseEntity<List<VentaDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	

@@ -1,4 +1,4 @@
-package ar.edu.iua.model;
+package ar.edu.iua.model.DTO;
 
 import java.io.Serializable;
 
@@ -15,7 +15,8 @@ public class ProveedorDTO implements Serializable {
 	private static final long serialVersionUID = 7474205942141513611L;
 	
 
-	public ProveedorDTO(Long id, String nombre) {
+	public ProveedorDTO(String nombre) {
+		log.debug("[MODEL - PROVEEDOR DTO] Constructor");
 		this.nombre = nombre;
 	}
 	

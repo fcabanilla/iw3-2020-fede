@@ -4,6 +4,7 @@ import java.util.List;
 import ar.edu.iua.business.exception.BusinessException;
 import ar.edu.iua.business.exception.NotFoundException;
 import ar.edu.iua.model.Venta;
+import ar.edu.iua.model.DTO.VentaDTO;
 
 public interface IVentaBusiness {
 
@@ -22,5 +23,7 @@ public interface IVentaBusiness {
 	 * */
 
 	public List<Venta> listByProduct(Long id) throws BusinessException;
+	
+	public List<VentaDTO> listByProductX(String productName) throws BusinessException;
 
 }

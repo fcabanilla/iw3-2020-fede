@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import ar.edu.iua.model.Venta;
+import ar.edu.iua.model.DTO.VentaDTO;
 
 public interface VentaRepository extends JpaRepository<Venta, Long>{
 	
@@ -14,6 +15,12 @@ public interface VentaRepository extends JpaRepository<Venta, Long>{
 	public  List<Venta> findVentasByProducto(@Param("id") long idProducto);
 	
 	public List<Venta> findByProductoListId(Long id);
+	
+	/*
+	 * QUERY NATIVAS
+	 * */
+	@Query(nativeQuery = true)
+	public List<VentaDTO> findByProductX(String productName);
 
 	//findByIngredienteListDescripcionIngrediente(String descripcionIngrediente);
 	

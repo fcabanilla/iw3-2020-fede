@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.iua.model.Proveedor;
-import ar.edu.iua.model.ProveedorDTO;
+import ar.edu.iua.model.DTO.ProveedorDTO;
 
 @Repository
 public interface ProveedorRepository extends JpaRepository<Proveedor, Integer>{
